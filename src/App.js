@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ListNames from "./components/listNames";
+import ListItems from "./components/listItems";
+import NavBar from "./components/navBar";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="topleft">Qpon's Todo List</div>
+      <div className="nav">
+        Current Selected List
+        <br />
+        (0/0) Completed
+      </div>
+      <div className="sidePanel">
+        <ListNames />
+      </div>
+      <div className="listButton">
+        <ListItems />
+      </div>
     </div>
   );
 }
