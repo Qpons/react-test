@@ -4,7 +4,7 @@ import ListItems from "./components/listItems";
 import NavBar from "./components/navBar";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <div className="topleft">Qpon's Todo List</div>
@@ -21,6 +21,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

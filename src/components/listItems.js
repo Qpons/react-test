@@ -1,24 +1,34 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import ListItem from "./listItem";
 
-class ListItems extends Component {
-  state = {
-    items: [],
-  };
+const ListItems = () => {
+  const [items, setItems] = useState([]);
+  const [valueInput, setValueInput] = useState("");
 
-  handleAddItem = () => {
-    let items = this.state.items.concat("Test");
+  const handleAddItem = () => {
+    setItems((items) => [...items, valueInput]);
+    //let tempValue = value + 1;
+    //setItems({ tempItems });
+    //setValue({ tempValue });
     console.log(items);
-    this.setState({ items });
+    console.log(valueInput);
   };
 
-  render() {
-    return (
-      <div>
-        <button onClick={this.handleAddItem}>Add List Item</button>
-      </div>
-    );
-  }
-}
+  const handleValueInput = (temp) => {
+    setValueInput(temp.target.value);
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        onChange={handleValueInput}
+        value={valueInput}
+        placeholder="New Value"
+      />
+      <button onClick={handleAddItem}>Add List Item</button>
+    </div>
+  );
+};
 
 export default ListItems;
