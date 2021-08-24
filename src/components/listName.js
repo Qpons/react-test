@@ -5,11 +5,11 @@ class ListName extends Component {
   state = {};
   render() {
     return (
-      <form className="listName">
+      <div className="listName">
         <input type="text" value="Enter List Name" />
         <br />
         <button>Add List</button>
-      </form>
+      </div>
     );
   }
 }
