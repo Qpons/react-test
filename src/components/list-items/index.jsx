@@ -9,15 +9,13 @@ const Items = () => {
     <div>
       <ol>
         {items.map((item, index) => (
-          <li>
-            <Item
-              item={item}
-              items={items}
-              index={index}
-              key={index}
-              setItems={setItems}
-            />
-          </li>
+          <Item
+            item={item}
+            items={items}
+            index={index}
+            key={index}
+            setItems={setItems}
+          />
         ))}
       </ol>
       <AddItem items={items} setItems={setItems} />
