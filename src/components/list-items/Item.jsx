@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-const Item = ({ prevItem }) => {
+const Item = ({ index, item, items, setItems }) => {
   const [editStatus, setEditStatus] = useState(false);
-  const [tempItem, setTempItem] = useState(prevItem);
-  const [cancelItem, setCancelItem] = useState(prevItem);
+  const [tempItem, setTempItem] = useState(item);
 
   const handleEntry = (event) => {
     setTempItem(event.target.value);
@@ -14,11 +13,13 @@ const Item = ({ prevItem }) => {
       {editStatus ? (
         <>
           <div>
-            <input type="text" value={tempItem} onChange={handleEntry} />
+            <input type='text' value={tempItem} onChange={handleEntry} />
             <button
               onClick={() => {
                 setEditStatus(false);
-                setCancelItem(tempItem);
+                const before = items.slice(0, index);
+                const after = items.slice(index + 1);
+                setItems([...before, tempItem, ...after]);
               }}
             >
               {"Save"}
@@ -26,7 +27,7 @@ const Item = ({ prevItem }) => {
             <button
               onClick={() => {
                 setEditStatus(false);
-                setTempItem(cancelItem);
+                setTempItem(item);
               }}
             >
               {"Cancel"}
@@ -36,7 +37,7 @@ const Item = ({ prevItem }) => {
       ) : (
         <>
           <div>
-            {tempItem}
+            {item}
             <button
               onClick={() => {
                 setEditStatus(true);
@@ -44,7 +45,15 @@ const Item = ({ prevItem }) => {
             >
               {"Edit"}
             </button>
-            <button>{"Delete"}</button>
+            <button
+              onClick={() => {
+                const tempArray = [...items];
+                tempArray.splice(index, 1);
+                setItems(tempArray);
+              }}
+            >
+              {"Delete"}
+            </button>
           </div>
         </>
       )}
