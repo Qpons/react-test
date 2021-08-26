@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ListNames from "./components/listNames";
-import ListItems from "./components/listItems";
+import Items from "./components/ListItems/Items";
 import NavBar from "./components/navBar";
 import "./App.css";
 
@@ -16,7 +16,7 @@ const App = () => (
       <ListNames />
     </div>
     <div className="listButton">
-      <ListItems />
+      <Items />
     </div>
   </div>
 );
