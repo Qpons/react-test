@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ListNames from "./components/listNames";
-import ListItems from "./components/listItems";
+import ListItems from "./components/list-items";
 import NavBar from "./components/navBar";
 import "./App.css";
 
