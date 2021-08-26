@@ -8,8 +8,12 @@ const AddItem = ({ setItems, items }) => {
   };
 
   const handleAddItem = () => {
-    setItems([...items, newItem]);
-    setNewItem("");
+    if (newItem === "") {
+      alert("Missing entry!");
+    } else {
+      setItems([...items, newItem]);
+      setNewItem("");
+    }
   };
 
   return (
