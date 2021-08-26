@@ -14,9 +14,12 @@ const Item = ({ index, item, items, setItems }) => {
         <>
           <div>
             <input type='text' value={tempItem} onChange={handleEntry} />
+
             <button
               onClick={() => {
-                setEditStatus(false);
+                !tempItem
+                  ? alert("Cannot save empty name!")
+                  : setEditStatus(false);
                 const before = items.slice(0, index);
                 const after = items.slice(index + 1);
                 setItems([...before, tempItem, ...after]);
@@ -24,6 +27,7 @@ const Item = ({ index, item, items, setItems }) => {
             >
               {"Save"}
             </button>
+
             <button
               onClick={() => {
                 setEditStatus(false);
@@ -38,6 +42,7 @@ const Item = ({ index, item, items, setItems }) => {
         <>
           <div>
             {item}
+
             <button
               onClick={() => {
                 setEditStatus(true);
@@ -45,6 +50,7 @@ const Item = ({ index, item, items, setItems }) => {
             >
               {"Edit"}
             </button>
+
             <button
               onClick={() => {
                 const tempArray = [...items];
