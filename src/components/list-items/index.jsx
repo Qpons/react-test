@@ -5,20 +5,35 @@ import Item from "./Item";
 const Items = () => {
   const [items, setItems] = useState([]);
 
+  const handleAddItem = (newItem) => {
+    if (newItem === "") {
+      alert("Missing entry!");
+    } else {
+      setItems([...items, newItem]);
+    }
+  };
+
   return (
     <div>
       <ol>
         {items.map((item, index) => (
           <Item
             item={item}
-            items={items}
-            index={index}
             key={index}
-            setItems={setItems}
+            onEdit={(item) => {
+              const before = items.slice(0, index);
+              const after = items.slice(index + 1);
+              setItems([...before, item, ...after]);
+            }}
+            onDelete={() => {
+              const tempArray = [...items];
+              tempArray.splice(index, 1);
+              setItems(tempArray);
+            }}
           />
         ))}
       </ol>
-      <AddItem items={items} setItems={setItems} />
+      <AddItem onSave={handleAddItem} />
     </div>
   );
 };

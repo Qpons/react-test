@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const Item = ({ index, item, items, setItems }) => {
+const Item = ({ item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -36,9 +36,7 @@ const Item = ({ index, item, items, setItems }) => {
                 alert("Cannot save empty name!");
               } else {
                 setEditStatus(false);
-                const before = items.slice(0, index);
-                const after = items.slice(index + 1);
-                setItems([...before, tempItem, ...after]);
+                onEdit(tempItem);
               }
             }}
           >
@@ -63,21 +61,12 @@ const Item = ({ index, item, items, setItems }) => {
 
           <button
             className='itemButton editBtn'
-            onClick={() => {
-              setEditStatus(true);
-            }}
+            onClick={() => setEditStatus(true)}
           >
             {"Edit"}
           </button>
 
-          <button
-            className='itemButton deleteBtn'
-            onClick={() => {
-              const tempArray = [...items];
-              tempArray.splice(index, 1);
-              setItems(tempArray);
-            }}
-          >
+          <button className='itemButton deleteBtn' onClick={onDelete}>
             {"Delete"}
           </button>
         </>
