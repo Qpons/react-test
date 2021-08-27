@@ -19,9 +19,15 @@ const AddItem = ({ setItems, items }) => {
   return (
     <div>
       <div>
-        <input onChange={handleEntry} type='text' value={newItem} />
+        <input
+          className='incomplete'
+          onChange={handleEntry}
+          type='text'
+          value={newItem}
+        />
 
         <button
+          className='itemButton saveBtn'
           onClick={handleAddItem}
           placeholder='Please enter new todo item'
         >
@@ -29,6 +35,7 @@ const AddItem = ({ setItems, items }) => {
         </button>
 
         <button
+          className='itemButton clearBtn'
           onClick={() => {
             setNewItem("");
           }}

@@ -5,7 +5,6 @@ const Item = ({ index, item, items, setItems }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [currentStatus, setCurrentStatus] = useState("incomplete");
 
   const handleEntry = (event) => {
     setTempItem(event.target.value);
@@ -19,18 +18,19 @@ const Item = ({ index, item, items, setItems }) => {
         checked={isCompleted}
         onChange={() => {
           setIsCompleted(!isCompleted);
-          if (isCompleted) {
-            setCurrentStatus("incomplete");
-          } else {
-            setCurrentStatus("complete");
-          }
         }}
       />
       {editStatus ? (
         <>
-          <input type='text' value={tempItem} onChange={handleEntry} />
+          <input
+            className='incomplete'
+            type='text'
+            value={tempItem}
+            onChange={handleEntry}
+          />
 
           <button
+            className='itemButton saveBtn'
             onClick={() => {
               if (tempItem === "") {
                 alert("Cannot save empty name!");
@@ -46,6 +46,7 @@ const Item = ({ index, item, items, setItems }) => {
           </button>
 
           <button
+            className='itemButton cancelBtn'
             onClick={() => {
               setEditStatus(false);
               setTempItem(item);
@@ -56,9 +57,12 @@ const Item = ({ index, item, items, setItems }) => {
         </>
       ) : (
         <>
-          <span className={currentStatus}>{item}</span>
+          <span className={isCompleted ? "complete" : "incomplete"}>
+            {item}
+          </span>
 
           <button
+            className='itemButton editBtn'
             onClick={() => {
               setEditStatus(true);
             }}
@@ -67,6 +71,7 @@ const Item = ({ index, item, items, setItems }) => {
           </button>
 
           <button
+            className='itemButton deleteBtn'
             onClick={() => {
               const tempArray = [...items];
               tempArray.splice(index, 1);
