@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 
-const AddItem = ({ setItems, items }) => {
+const AddItem = ({ onSave }) => {
   const [newItem, setNewItem] = useState("");
   const handleEntry = (event) => {
     setNewItem(event.target.value);
     console.log(event.target.value);
-  };
-
-  const handleAddItem = () => {
-    if (newItem === "") {
-      alert("Missing entry!");
-    } else {
-      setItems([...items, newItem]);
-      setNewItem("");
-    }
   };
 
   return (
@@ -28,8 +19,10 @@ const AddItem = ({ setItems, items }) => {
 
         <button
           className='itemButton saveBtn'
-          onClick={handleAddItem}
-          placeholder='Please enter new todo item'
+          onClick={() => {
+            onSave(newItem);
+            setNewItem("");
+          }}
         >
           {"Save"}
         </button>
