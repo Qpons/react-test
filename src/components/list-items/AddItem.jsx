@@ -4,7 +4,6 @@ const AddItem = ({ onSave }) => {
   const [newItem, setNewItem] = useState("");
   const handleEntry = (event) => {
     setNewItem(event.target.value);
-    console.log(event.target.value);
   };
 
   return (

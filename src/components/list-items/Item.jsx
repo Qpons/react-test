@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const Item = ({ item, onDelete, onEdit }) => {
+const Item = ({ item, onCompletion, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -18,6 +18,7 @@ const Item = ({ item, onDelete, onEdit }) => {
         checked={isCompleted}
         onChange={() => {
           setIsCompleted(!isCompleted);
+          onEdit(tempItem, isCompleted);
         }}
       />
       {editStatus ? (
@@ -36,7 +37,7 @@ const Item = ({ item, onDelete, onEdit }) => {
                 alert("Cannot save empty name!");
               } else {
                 setEditStatus(false);
-                onEdit(tempItem);
+                onEdit(tempItem, isCompleted);
               }
             }}
           >
