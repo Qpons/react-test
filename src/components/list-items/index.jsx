@@ -9,7 +9,7 @@ const Items = () => {
     if (newItem === "") {
       alert("Missing entry!");
     } else {
-      setItems([...items, { todoItem: newItem, checked: false }]);
+      setItems([...items, { todoItem: newItem, completed: false }]);
     }
     console.log(items);
   };
@@ -26,7 +26,7 @@ const Items = () => {
               const after = items.slice(index + 1);
               setItems([
                 ...before,
-                { todoItem: item, checked: checkStatus },
+                { todoItem: item, completed: checkStatus },
                 ...after,
               ]);
               console.log(items);
