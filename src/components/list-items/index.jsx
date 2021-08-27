@@ -9,21 +9,27 @@ const Items = () => {
     if (newItem === "") {
       alert("Missing entry!");
     } else {
-      setItems([...items, newItem]);
+      setItems([...items, { todoItem: newItem, checked: false }]);
     }
+    console.log(items);
   };
 
   return (
     <div>
       <ol>
-        {items.map((item, index) => (
+        {items.map((itemObj, index) => (
           <Item
-            item={item}
+            item={itemObj.todoItem}
             key={index}
-            onEdit={(item) => {
+            onEdit={(item, checkStatus) => {
               const before = items.slice(0, index);
               const after = items.slice(index + 1);
-              setItems([...before, item, ...after]);
+              setItems([
+                ...before,
+                { todoItem: item, checked: checkStatus },
+                ...after,
+              ]);
+              console.log(items);
             }}
             onDelete={() => {
               const tempArray = [...items];
