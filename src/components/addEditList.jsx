@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const AddEditList = ({ onAdd, onSelect }) => {
+const AddEditList = ({ currentTitle, onAdd, onSelect }) => {
   const [listAdded, setListAdded] = useState(false);
   const [listEdit, setListEdit] = useState(false);
   const [titleName, setTitleName] = useState("");
@@ -41,6 +41,7 @@ const AddEditList = ({ onAdd, onSelect }) => {
               onClick={() => {
                 setListEdit(false);
                 setListAdded(true);
+                setTitleName(currentTitle);
               }}
             >
               Cancel

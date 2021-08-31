@@ -11,6 +11,7 @@ const ListNames = () => {
         <AddEditList
           key={index}
           id={index}
+          currentTitle={listName.title}
           onSelect={() => {
             console.log(todoLists);
             console.log(index);
