@@ -35,3 +35,9 @@
 .deleteBtn {
   background-color: salmon;
 }
+
+.listName {
+  padding: 10px;
+  border: 2px solid rgb(156, 214, 247);
+  background-color: turquoise;
+}
