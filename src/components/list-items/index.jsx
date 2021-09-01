@@ -11,6 +11,7 @@ const SavedItems = () => {
     if (selected >= savedItems.length) {
       const tempArray = [...savedItems, []];
       setSavedItems(tempArray);
+      setSelected(selected - 1);
     }
   }
 
