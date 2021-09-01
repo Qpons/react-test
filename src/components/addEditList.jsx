@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SelectContext } from "../SelectedContext";
 import "./style.css";
 
-const AddEditList = ({ currentTitle, onAdd, onSelect }) => {
+const AddEditList = ({ currentTitle, onAdd, id }) => {
   const [listAdded, setListAdded] = useState(false);
   const [listEdit, setListEdit] = useState(false);
   const [titleName, setTitleName] = useState("");
+  const { selected, setSelected } = useContext(SelectContext);
 
   const handleEntry = (event) => {
     setTitleName(event.target.value);
@@ -52,7 +54,7 @@ const AddEditList = ({ currentTitle, onAdd, onSelect }) => {
         <>
           <div>{titleName}</div>
 
-          <button onClick={onSelect}>Select</button>
+          <button onClick={() => setSelected(id)}>Select</button>
 
           <button
             onClick={() => {

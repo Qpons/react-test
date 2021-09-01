@@ -1,24 +1,33 @@
-import React, { Component } from "react";
-import ListNames from "./components/listNames";
-import Items from "./components/list-items/index";
+import React, { useState } from "react";
+import ListNames from "./components/ListNames";
+import SavedItems from "./components/list-items/index";
 import NavBar from "./components/navBar";
 import "./App.css";
+import { SelectContext } from "./SelectedContext";
 
-const App = () => (
-  <div className='App'>
-    <div className='topleft'>Qpon's Todo List</div>
-    <div className='nav'>
-      Current Selected List
-      <br />
-      (0/0) Completed
+const App = () => {
+  const [selected, setSelected] = useState(0);
+
+  return (
+    <div className='App'>
+      <div className='topleft'>Qpon's Todo List</div>
+      <div className='nav'>
+        Current Selected List
+        <br />
+        (0/0) Completed
+      </div>
+      <div className='sidePanel'>
+        <SelectContext.Provider value={{ selected, setSelected }}>
+          <ListNames />
+        </SelectContext.Provider>
+      </div>
+      <div className='listButton'>
+        <SelectContext.Provider value={{ selected, setSelected }}>
+          <SavedItems />
+        </SelectContext.Provider>
+      </div>
     </div>
-    <div className='sidePanel'>
-      <ListNames />
-    </div>
-    <div className='listButton'>
-      <Items />
-    </div>
-  </div>
-);
+  );
+};
 
 export default App;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddEditList from "./addEditList";
+import AddEditList from "./AddEditList";
 import "./style.css";
 
 const ListNames = () => {
