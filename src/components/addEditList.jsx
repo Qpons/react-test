@@ -31,6 +31,7 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
               } else {
                 onAdd(titleName, listEdit);
                 setListAdded(true);
+                setSelected(id + 1);
               }
             }}
           >
