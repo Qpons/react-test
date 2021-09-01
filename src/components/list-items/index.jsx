@@ -16,12 +16,12 @@ const SavedItems = () => {
 
   return (
     <div>
-      {savedItems.length ? (
+      {savedItems.length - 1 ? (
         <Items
           items={savedItems[selected]}
           onSetSavedItems={(editedItems) => {
             const before = savedItems.slice(0, selected);
-            const after = savedItems.slice(selected);
+            const after = savedItems.slice(selected + 1);
             setSavedItems([...before, editedItems, ...after]);
           }}
         />
