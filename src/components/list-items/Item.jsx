@@ -1,64 +1,94 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { SelectContext } from '../../SelectedContext';
+import './style.css';
 
-const Item = ({ index, item, items, setItems }) => {
+const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
-  const [tempItem, setTempItem] = useState(item);
+  const tempItem = useRef();
+  const { selected } = useContext(SelectContext);
+
+  useEffect(() => {
+    setEditStatus(false);
+    tempItem.current = item;
+  }, [selected]);
 
   const handleEntry = (event) => {
-    setTempItem(event.target.value);
+    tempItem.current = event.target.value;
   };
 
   return (
     <div>
+      <input
+        type='checkbox'
+        value={item}
+        checked={completionStatus}
+        onChange={() => {
+          completionStatus = !completionStatus;
+          onEdit(tempItem.current, completionStatus);
+        }}
+      />
+
       {editStatus ? (
         <>
-          <div>
-            <input type='text' value={tempItem} onChange={handleEntry} />
-            <button
-              onClick={() => {
+          <input
+            className='incomplete'
+            type='text'
+            value={tempItem.current}
+            onChange={handleEntry}
+          />
+
+          <button
+            className='item-button save-btn'
+            onClick={() => {
+              if (tempItem.current === '') {
+                alert('Cannot save empty name!');
+              } else {
                 setEditStatus(false);
-                const before = items.slice(0, index);
-                const after = items.slice(index + 1);
-                setItems([...before, tempItem, ...after]);
-              }}
-            >
-              {"Save"}
-            </button>
-            <button
-              onClick={() => {
-                setEditStatus(false);
-                setTempItem(item);
-              }}
-            >
-              {"Cancel"}
-            </button>
-          </div>
+                onEdit(tempItem.current, completionStatus);
+              }
+            }}
+          >
+            {'Save'}
+          </button>
+
+          <button
+            className='item-button cancel-btn'
+            onClick={() => {
+              setEditStatus(false);
+              tempItem.current = item;
+            }}
+          >
+            {'Cancel'}
+          </button>
         </>
       ) : (
         <>
-          <div>
+          <span className={completionStatus ? 'complete' : 'incomplete'}>
             {item}
-            <button
-              onClick={() => {
-                setEditStatus(true);
-              }}
-            >
-              {"Edit"}
-            </button>
-            <button
-              onClick={() => {
-                const tempArray = [...items];
-                tempArray.splice(index, 1);
-                setItems(tempArray);
-              }}
-            >
-              {"Delete"}
-            </button>
-          </div>
+          </span>
+
+          <button
+            className='item-button edit-btn'
+            onClick={() => setEditStatus(true)}
+          >
+            {'Edit'}
+          </button>
+
+          <button className='item-button delete-btn' onClick={onDelete}>
+            {'Delete'}
+          </button>
         </>
       )}
     </div>
   );
+};
+
+Item.propTypes = {
+  completionStatus: PropTypes.bool,
+  item: PropTypes.string,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 export default Item;

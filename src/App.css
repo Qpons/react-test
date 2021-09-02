@@ -1,9 +1,9 @@
 * {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   box-sizing: border-box;
 }
 
-.topleft {
+.top-left {
   width: 220px;
   height: 150px;
   background-color: purple;
@@ -27,7 +27,7 @@
   text-shadow: 2px 2px black;
 }
 
-.sidePanel {
+.side-panel {
   bottom: 0;
   width: 220px;
   float: left;
@@ -39,7 +39,7 @@
   text-align: center;
 }
 
-.listButton {
+.list-button {
   left: 220px;
   right: 0;
   padding: 20px;
