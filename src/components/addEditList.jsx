@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SelectContext } from '../SelectedContext';
 import './style.css';
 
-const AddEditList = ({ currentTitle, onAdd, id }) => {
+const AddEditList = ({ currentTitle, onAdd, index }) => {
   const [listAdded, setListAdded] = useState(false);
   const [listEdit, setListEdit] = useState(false);
   const [titleName, setTitleName] = useState('');
@@ -14,7 +14,7 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
   };
 
   return (
-    <div className={id === selected ? 'selected' : 'not-selected'}>
+    <div className={index === selected ? 'selected' : 'not-selected'}>
       {!listAdded ? (
         <>
           {' '}
@@ -32,7 +32,7 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
               } else {
                 onAdd(titleName, listEdit);
                 setListAdded(true);
-                setSelected(id + 1);
+                setSelected(index + 1);
               }
             }}
           >
@@ -56,7 +56,7 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
         <>
           <div>{titleName}</div>
 
-          <button onClick={() => setSelected(id)}>Select</button>
+          <button onClick={() => setSelected(index)}>Select</button>
 
           <button
             onClick={() => {

@@ -11,8 +11,6 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   useEffect(() => {
     setEditStatus(false);
     setTempItem(item);
-    console.log('Use Effect Executed');
-    console.log(selected);
   }, [selected]);
 
   const handleEntry = (event) => {

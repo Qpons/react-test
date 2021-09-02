@@ -10,7 +10,7 @@ const ListNames = () => {
       {todoLists.map((listName, index) => (
         <AddEditList
           key={index}
-          id={index}
+          index={index}
           currentTitle={listName.title}
           onSelect={() => {
             console.log(todoLists);
