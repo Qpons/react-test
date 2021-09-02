@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
-const Item = ({ item, onDelete, onEdit }) => {
+const Item = ({ item, isComplete, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
-  const [tempItem, setTempItem] = useState(item);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [tempValue, setTempValue] = useState(item);
 
   const handleEntry = (event) => {
-    setTempItem(event.target.value);
+    setTempValue(event.target.value);
   };
 
   return (
@@ -16,10 +15,10 @@ const Item = ({ item, onDelete, onEdit }) => {
       <input
         type='checkbox'
         value={item}
-        checked={isCompleted}
+        checked={isComplete}
         onChange={() => {
-          setIsCompleted(!isCompleted);
-          onEdit(tempItem, isCompleted);
+          setIsCompleted(!isComplete);
+          onEdit(tempValue, isComplete);
         }}
       />
 
@@ -28,18 +27,18 @@ const Item = ({ item, onDelete, onEdit }) => {
           <input
             className='incomplete'
             type='text'
-            value={tempItem}
+            value={tempValue}
             onChange={handleEntry}
           />
 
           <button
             className='item-button save-btn'
             onClick={() => {
-              if (tempItem === '') {
+              if (tempValue === '') {
                 alert('Cannot save empty name!');
               } else {
                 setEditStatus(false);
-                onEdit(tempItem, isCompleted);
+                onEdit(tempValue, isComplete);
               }
             }}
           >
@@ -50,7 +49,7 @@ const Item = ({ item, onDelete, onEdit }) => {
             className='item-button cancel-btn'
             onClick={() => {
               setEditStatus(false);
-              setTempItem(item);
+              setTempValue(item);
             }}
           >
             {'Cancel'}
@@ -58,9 +57,7 @@ const Item = ({ item, onDelete, onEdit }) => {
         </>
       ) : (
         <>
-          <span className={isCompleted ? 'complete' : 'incomplete'}>
-            {item}
-          </span>
+          <span className={isComplete ? 'complete' : 'incomplete'}>{item}</span>
 
           <button
             className='item-button edit-btn'

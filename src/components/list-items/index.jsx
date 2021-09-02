@@ -19,8 +19,9 @@ const Items = () => {
       <ol>
         {items.map((item, index) => (
           <Item
-            item={item.todoItem}
+            item={item.value}
             key={index}
+            isComplete={item.completed}
             onEdit={(item, checkStatus) => {
               const before = items.slice(0, index);
               const after = items.slice(index + 1);
