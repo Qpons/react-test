@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const Item = ({ item, onDelete, onEdit }) => {
+const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -15,10 +15,10 @@ const Item = ({ item, onDelete, onEdit }) => {
       <input
         type='checkbox'
         value={item}
-        checked={isCompleted}
+        checked={completionStatus}
         onChange={() => {
-          setIsCompleted(!isCompleted);
-          onEdit(tempItem, isCompleted);
+          completionStatus = !completionStatus;
+          onEdit(tempItem, completionStatus);
         }}
       />
       {editStatus ? (
@@ -37,7 +37,7 @@ const Item = ({ item, onDelete, onEdit }) => {
                 alert("Cannot save empty name!");
               } else {
                 setEditStatus(false);
-                onEdit(tempItem, isCompleted);
+                onEdit(tempItem, completionStatus);
               }
             }}
           >
@@ -56,7 +56,7 @@ const Item = ({ item, onDelete, onEdit }) => {
         </>
       ) : (
         <>
-          <span className={isCompleted ? "complete" : "incomplete"}>
+          <span className={completionStatus ? "complete" : "incomplete"}>
             {item}
           </span>
 

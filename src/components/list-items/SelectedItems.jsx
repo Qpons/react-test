@@ -19,21 +19,24 @@ const Items = ({ items, onSetSavedItems }) => {
         {items.map((itemObj, index) => (
           <Item
             item={itemObj.todoItem}
+            completionStatus={itemObj.completed}
             key={index}
             onEdit={(item, checkStatus) => {
               const before = items.slice(0, index);
               const after = items.slice(index + 1);
-              onSetSavedItems([
+              items = [
                 ...before,
                 { todoItem: item, completed: checkStatus },
                 ...after,
-              ]);
+              ];
+              onSetSavedItems(items);
               console.log(items);
             }}
             onDelete={() => {
               const tempArray = [...items];
               tempArray.splice(index, 1);
-              onSetSavedItems(tempArray);
+              items = tempArray;
+              onSetSavedItems(items);
             }}
           />
         ))}
