@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ListNames from './components/ListNames';
 import SavedItems from './components/list-items/index';
-import NavBar from './components/navBar';
+import NavBar from './components/NavBar';
 import './App.css';
 import { SelectContext } from './SelectedContext';
 

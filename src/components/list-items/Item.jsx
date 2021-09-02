@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { SelectContext } from '../../SelectedContext';
 import './style.css';
 
 const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
-  const [tempItem, setTempItem] = useState(item);
+  const tempItem = useRef();
   const { selected } = useContext(SelectContext);
 
   useEffect(() => {
     setEditStatus(false);
-    setTempItem(item);
+    tempItem.current = item;
   }, [selected]);
 
   const handleEntry = (event) => {
-    setTempItem(event.target.value);
+    tempItem.current = event.target.value;
   };
 
   return (
@@ -25,7 +25,7 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
         checked={completionStatus}
         onChange={() => {
           completionStatus = !completionStatus;
-          onEdit(tempItem, completionStatus);
+          onEdit(tempItem.current, completionStatus);
         }}
       />
 
@@ -34,18 +34,18 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
           <input
             className='incomplete'
             type='text'
-            value={tempItem}
+            value={tempItem.current}
             onChange={handleEntry}
           />
 
           <button
             className='item-button save-btn'
             onClick={() => {
-              if (tempItem === '') {
+              if (tempItem.current === '') {
                 alert('Cannot save empty name!');
               } else {
                 setEditStatus(false);
-                onEdit(tempItem, completionStatus);
+                onEdit(tempItem.current, completionStatus);
               }
             }}
           >
@@ -56,7 +56,7 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
             className='item-button cancel-btn'
             onClick={() => {
               setEditStatus(false);
-              setTempItem(item);
+              tempItem.current = item;
             }}
           >
             {'Cancel'}
