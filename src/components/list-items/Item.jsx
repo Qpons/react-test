@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import "./style.css";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './style.css';
 
 const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
@@ -33,15 +34,15 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
           <button
             className='itemButton saveBtn'
             onClick={() => {
-              if (tempItem === "") {
-                alert("Cannot save empty name!");
+              if (tempItem === '') {
+                alert('Cannot save empty name!');
               } else {
                 setEditStatus(false);
                 onEdit(tempItem, completionStatus);
               }
             }}
           >
-            {"Save"}
+            {'Save'}
           </button>
 
           <button
@@ -51,12 +52,12 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
               setTempItem(item);
             }}
           >
-            {"Cancel"}
+            {'Cancel'}
           </button>
         </>
       ) : (
         <>
-          <span className={completionStatus ? "complete" : "incomplete"}>
+          <span className={completionStatus ? 'complete' : 'incomplete'}>
             {item}
           </span>
 
@@ -64,16 +65,23 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
             className='itemButton editBtn'
             onClick={() => setEditStatus(true)}
           >
-            {"Edit"}
+            {'Edit'}
           </button>
 
           <button className='itemButton deleteBtn' onClick={onDelete}>
-            {"Delete"}
+            {'Delete'}
           </button>
         </>
       )}
     </div>
   );
+};
+
+Item.propTypes = {
+  completionStatus: PropTypes.bool,
+  item: PropTypes.string,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 export default Item;

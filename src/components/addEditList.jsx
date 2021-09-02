@@ -1,11 +1,12 @@
-import React, { useState, useContext } from "react";
-import { SelectContext } from "../SelectedContext";
-import "./style.css";
+import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
+import { SelectContext } from '../SelectedContext';
+import './style.css';
 
 const AddEditList = ({ currentTitle, onAdd, id }) => {
   const [listAdded, setListAdded] = useState(false);
   const [listEdit, setListEdit] = useState(false);
-  const [titleName, setTitleName] = useState("");
+  const [titleName, setTitleName] = useState('');
   const { selected, setSelected } = useContext(SelectContext);
 
   const handleEntry = (event) => {
@@ -16,7 +17,7 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
     <div className='listName'>
       {!listAdded ? (
         <>
-          {" "}
+          {' '}
           <input
             onChange={handleEntry}
             type='text'
@@ -26,8 +27,8 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
           <br />
           <button
             onClick={() => {
-              if (titleName === "") {
-                alert("List Name Cannot Be Empty!");
+              if (titleName === '') {
+                alert('List Name Cannot Be Empty!');
               } else {
                 onAdd(titleName, listEdit);
                 setListAdded(true);
@@ -35,10 +36,10 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
               }
             }}
           >
-            {!listEdit ? "Add List" : "Save"}
+            {!listEdit ? 'Add List' : 'Save'}
           </button>
           {!listEdit ? (
-            ""
+            ''
           ) : (
             <button
               onClick={() => {
@@ -71,6 +72,12 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
       )}
     </div>
   );
+};
+
+AddEditList.propTypes = {
+  currentTitle: PropTypes.string,
+  onAdd: PropTypes.func,
+  id: PropTypes.number,
 };
 
 export default AddEditList;
