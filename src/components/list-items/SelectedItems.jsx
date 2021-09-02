@@ -7,7 +7,7 @@ const Items = ({ items, onSetSavedItems }) => {
     if (newItem === '') {
       alert('Missing entry!');
     } else {
-      items = [...items, { todoItem: newItem, completed: false }];
+      items = [...items, { value: newItem, completed: false }];
       onSetSavedItems(items);
     }
     console.log(items);
@@ -16,17 +16,17 @@ const Items = ({ items, onSetSavedItems }) => {
   return (
     <div>
       <ol>
-        {items.map((itemObj, index) => (
+        {items.map((item, index) => (
           <Item
-            item={itemObj.todoItem}
-            completionStatus={itemObj.completed}
+            item={item.value}
+            completionStatus={item.completed}
             key={index}
             onEdit={(item, checkStatus) => {
               const before = items.slice(0, index);
               const after = items.slice(index + 1);
               items = [
                 ...before,
-                { todoItem: item, completed: checkStatus },
+                { value: item, completed: checkStatus },
                 ...after,
               ];
               onSetSavedItems(items);
