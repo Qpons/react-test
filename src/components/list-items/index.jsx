@@ -22,15 +22,22 @@ const Items = () => {
             item={item.value}
             key={index}
             isComplete={item.completed}
-            onEdit={(item, checkStatus) => {
+            onCompleteClick={() => {
               const before = items.slice(0, index);
               const after = items.slice(index + 1);
               setItems([
                 ...before,
-                { value: item, completed: checkStatus },
+                { value: item.value, completed: !item.completed },
+                ...after,
+            }}
+            onEdit={(item) => {
+              const before = items.slice(0, index);
+              const after = items.slice(index + 1);
+              setItems([
+                ...before,
+                { value: item, completed: item.completed },
                 ...after,
               ]);
-              console.log(items);
             }}
             onDelete={() => {
               const before = items.slice(0, index);
