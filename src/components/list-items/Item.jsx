@@ -20,6 +20,7 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
           onEdit(tempItem, completionStatus);
         }}
       />
+
       {editStatus ? (
         <>
           <input
