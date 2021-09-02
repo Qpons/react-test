@@ -10,28 +10,28 @@
   font-size: x-large;
 }
 
-.itemButton {
+.item-button {
   font-size: x-large;
   margin: 5px;
   color: white;
 }
 
-.saveBtn {
+.save-btn {
   background-color: green;
 }
 
-.clearBtn {
+.clear-btn {
   background-color: rgb(170, 125, 42);
 }
 
-.editBtn {
+.edit-btn {
   background-color: rgba(58, 181, 168, 0.508);
 }
 
-.cancelBtn {
+.cancel-btn {
   background-color: red;
 }
 
-.deleteBtn {
+.delete-btn {
   background-color: salmon;
 }

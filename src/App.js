@@ -6,16 +6,16 @@ import './App.css';
 
 const App = () => (
   <div className='App'>
-    <div className='topleft'>Qpon's Todo List</div>
+    <div className='top-left'>Qpon's Todo List</div>
     <div className='nav'>
       Current Selected List
       <br />
       (0/0) Completed
     </div>
-    <div className='sidePanel'>
+    <div className='side-panel'>
       <ListNames />
     </div>
-    <div className='listButton'>
+    <div className='list-button'>
       <Items />
     </div>
   </div>
