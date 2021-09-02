@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./style.css";
+import React, { useState } from 'react';
+import './style.css';
 
 const Item = ({ item, onCompletion, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
@@ -21,6 +21,7 @@ const Item = ({ item, onCompletion, onDelete, onEdit }) => {
           onEdit(tempItem, isCompleted);
         }}
       />
+
       {editStatus ? (
         <>
           <input
@@ -33,15 +34,15 @@ const Item = ({ item, onCompletion, onDelete, onEdit }) => {
           <button
             className='itemButton saveBtn'
             onClick={() => {
-              if (tempItem === "") {
-                alert("Cannot save empty name!");
+              if (tempItem === '') {
+                alert('Cannot save empty name!');
               } else {
                 setEditStatus(false);
                 onEdit(tempItem, isCompleted);
               }
             }}
           >
-            {"Save"}
+            {'Save'}
           </button>
 
           <button
@@ -51,12 +52,12 @@ const Item = ({ item, onCompletion, onDelete, onEdit }) => {
               setTempItem(item);
             }}
           >
-            {"Cancel"}
+            {'Cancel'}
           </button>
         </>
       ) : (
         <>
-          <span className={isCompleted ? "complete" : "incomplete"}>
+          <span className={isCompleted ? 'complete' : 'incomplete'}>
             {item}
           </span>
 
@@ -64,11 +65,11 @@ const Item = ({ item, onCompletion, onDelete, onEdit }) => {
             className='itemButton editBtn'
             onClick={() => setEditStatus(true)}
           >
-            {"Edit"}
+            {'Edit'}
           </button>
 
           <button className='itemButton deleteBtn' onClick={onDelete}>
-            {"Delete"}
+            {'Delete'}
           </button>
         </>
       )}

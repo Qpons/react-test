@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const AddItem = ({ onSave }) => {
-  const [newItem, setNewItem] = useState("");
+  const [newItem, setNewItem] = useState('');
   const handleEntry = (event) => {
     setNewItem(event.target.value);
   };
@@ -20,19 +20,19 @@ const AddItem = ({ onSave }) => {
           className='itemButton saveBtn'
           onClick={() => {
             onSave(newItem);
-            setNewItem("");
+            setNewItem('');
           }}
         >
-          {"Save"}
+          {'Save'}
         </button>
 
         <button
           className='itemButton clearBtn'
           onClick={() => {
-            setNewItem("");
+            setNewItem('');
           }}
         >
-          {"Clear"}
+          {'Clear'}
         </button>
       </div>
     </div>

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import ListNames from "./components/listNames";
-import Items from "./components/list-items/index";
-import NavBar from "./components/navBar";
-import "./App.css";
+import React, { Component } from 'react';
+import ListNames from './components/listNames';
+import Items from './components/list-items/index';
+import NavBar from './components/navBar';
+import './App.css';
 
 const App = () => (
   <div className='App'>
