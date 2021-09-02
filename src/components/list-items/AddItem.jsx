@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const AddItem = ({ onSave }) => {
   const [newItem, setNewItem] = useState('');
@@ -37,6 +38,10 @@ const AddItem = ({ onSave }) => {
       </div>
     </div>
   );
+};
+
+AddItem.propTypes = {
+  onSave: PropTypes.func,
 };
 
 export default AddItem;

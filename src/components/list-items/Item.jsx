@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
 const Item = ({ item, onDelete, onEdit }) => {
@@ -75,6 +76,12 @@ const Item = ({ item, onDelete, onEdit }) => {
       )}
     </div>
   );
+};
+
+Item.propTypes = {
+  item: PropTypes.string,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 export default Item;
