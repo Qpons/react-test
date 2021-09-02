@@ -4,9 +4,11 @@ import SavedItems from './components/list-items/index';
 import NavBar from './components/NavBar';
 import './App.css';
 import { SelectContext } from './SelectedContext';
+import { DeleteContext } from './SelectedContext';
 
 const App = () => {
   const [selected, setSelected] = useState(0);
+  const [deleted, setDeleted] = useState(-1);
 
   return (
     <div className='App'>
@@ -17,14 +19,18 @@ const App = () => {
         (0/0) Completed
       </div>
       <div className='side-panel'>
-        <SelectContext.Provider value={{ selected, setSelected }}>
-          <ListNames />
-        </SelectContext.Provider>
+        <DeleteContext.Provider value={{ deleted, setDeleted }}>
+          <SelectContext.Provider value={{ selected, setSelected }}>
+            <ListNames />
+          </SelectContext.Provider>
+        </DeleteContext.Provider>
       </div>
       <div className='list-button'>
-        <SelectContext.Provider value={{ selected, setSelected }}>
-          <SavedItems />
-        </SelectContext.Provider>
+        <DeleteContext.Provider value={{ deleted, setDeleted }}>
+          <SelectContext.Provider value={{ selected, setSelected }}>
+            <SavedItems />
+          </SelectContext.Provider>
+        </DeleteContext.Provider>
       </div>
     </div>
   );

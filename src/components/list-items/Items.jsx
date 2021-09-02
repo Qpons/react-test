@@ -31,12 +31,11 @@ const Items = ({ items, onSetSavedItems }) => {
                 ...after,
               ];
               onSetSavedItems(items);
-              console.log(items);
             }}
             onDelete={() => {
-              const tempArray = [...items];
-              tempArray.splice(index, 1);
-              items = tempArray;
+              const before = items.slice(0, index);
+              const after = items.slice(index + 1);
+              items = [...before, ...after];
               onSetSavedItems(items);
             }}
           />

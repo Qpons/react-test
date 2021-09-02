@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import AddEditList from './AddEditList';
 import './style.css';
 
 const ListNames = () => {
-  const [todoLists, setTodoLists] = useState([{ id: 0, title: '' }]);
+  const [todoLists, setTodoLists] = useState(['']);
 
   return (
     <div>
-      {todoLists.map((listName, index) => (
+      {todoLists.map((value, index) => (
         <AddEditList
           key={index}
           index={index}
-          currentTitle={listName.title}
-          onSelect={() => {
-            console.log(todoLists);
-            console.log(index);
-          }}
+          currentTitle={value}
           onAdd={(titleName, editStatus) => {
             const tempArray = [...todoLists];
-            tempArray[index].title = titleName;
+            tempArray[index] = titleName;
             if (editStatus === false) {
-              const tempTempArray = [
-                ...tempArray,
-                { id: index + 1, title: '' },
-              ];
+              const tempTempArray = [...tempArray, ''];
               setTodoLists(tempTempArray);
             } else {
               setTodoLists(tempArray);
             }
+          }}
+          onDelete={(deleteIndex) => {
+            console.log(deleteIndex);
+            const before = todoLists.slice(0, deleteIndex);
+            const after = todoLists.slice(deleteIndex + 1);
+            setTodoLists([...before, ...after]);
+            console.log(todoLists);
           }}
         />
       ))}

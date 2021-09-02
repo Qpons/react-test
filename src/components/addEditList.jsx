@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { SelectContext } from '../SelectedContext';
+import { DeleteContext } from '../SelectedContext';
 import './style.css';
 
-const AddEditList = ({ currentTitle, onAdd, index }) => {
+const AddEditList = ({ currentTitle, onAdd, onDelete, index }) => {
   const [listAdded, setListAdded] = useState(false);
   const [listEdit, setListEdit] = useState(false);
   const [titleName, setTitleName] = useState('');
   const { selected, setSelected } = useContext(SelectContext);
+  const { deleted, setDeleted } = useContext(DeleteContext);
 
   const handleEntry = (event) => {
     setTitleName(event.target.value);
@@ -67,7 +69,15 @@ const AddEditList = ({ currentTitle, onAdd, index }) => {
             Edit
           </button>
 
-          <button>Delete</button>
+          <button
+            onClick={() => {
+              console.log(index);
+              onDelete(index);
+              setDeleted(index);
+            }}
+          >
+            Delete
+          </button>
         </>
       )}
     </div>
