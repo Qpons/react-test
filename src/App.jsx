@@ -10,18 +10,18 @@ const App = () => {
 
   return (
     <div className='App'>
-      <div className='topleft'>Qpon's Todo List</div>
+      <div className='top-left'>Qpon's Todo List</div>
       <div className='nav'>
         Current Selected List
         <br />
         (0/0) Completed
       </div>
-      <div className='sidePanel'>
+      <div className='side-panel'>
         <SelectContext.Provider value={{ selected, setSelected }}>
           <ListNames />
         </SelectContext.Provider>
       </div>
-      <div className='listButton'>
+      <div className='list-button'>
         <SelectContext.Provider value={{ selected, setSelected }}>
           <SavedItems />
         </SelectContext.Provider>

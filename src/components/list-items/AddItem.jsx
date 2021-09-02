@@ -18,7 +18,7 @@ const AddItem = ({ onSave }) => {
         />
 
         <button
-          className='itemButton saveBtn'
+          className='item-button save-btn'
           onClick={() => {
             onSave(newItem);
             setNewItem('');
@@ -28,7 +28,7 @@ const AddItem = ({ onSave }) => {
         </button>
 
         <button
-          className='itemButton clearBtn'
+          className='item-button clear-btn'
           onClick={() => {
             setNewItem('');
           }}

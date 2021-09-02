@@ -12,7 +12,7 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
     setEditStatus(false);
     setTempItem(item);
     console.log('Use Effect Executed');
-    console.log('select');
+    console.log(selected);
   }, [selected]);
 
   const handleEntry = (event) => {
@@ -41,7 +41,7 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
           />
 
           <button
-            className='itemButton saveBtn'
+            className='item-button save-btn'
             onClick={() => {
               if (tempItem === '') {
                 alert('Cannot save empty name!');
@@ -55,7 +55,7 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
           </button>
 
           <button
-            className='itemButton cancelBtn'
+            className='item-button cancel-btn'
             onClick={() => {
               setEditStatus(false);
               setTempItem(item);
@@ -71,13 +71,13 @@ const Item = ({ completionStatus, item, onDelete, onEdit }) => {
           </span>
 
           <button
-            className='itemButton editBtn'
+            className='item-button edit-btn'
             onClick={() => setEditStatus(true)}
           >
             {'Edit'}
           </button>
 
-          <button className='itemButton deleteBtn' onClick={onDelete}>
+          <button className='item-button delete-btn' onClick={onDelete}>
             {'Delete'}
           </button>
         </>
