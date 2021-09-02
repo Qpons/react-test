@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { SelectContext } from '../../SelectedContext';
 import './style.css';
 
 const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
+  const { selected } = useContext(SelectContext);
 
   useEffect(() => {
     setEditStatus(false);
     setTempItem(item);
-  });
+    console.log('Use Effect Executed');
+    console.log('select');
+  }, [selected]);
 
   const handleEntry = (event) => {
     setTempItem(event.target.value);
