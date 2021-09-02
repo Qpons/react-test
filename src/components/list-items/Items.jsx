@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AddItem from './AddItem';
 import Item from './Item';
 
@@ -44,6 +45,11 @@ const Items = ({ items, onSetSavedItems }) => {
       <AddItem onSave={handleAddItem} />
     </div>
   );
+};
+
+Items.propTypes = {
+  items: PropTypes.array,
+  onSetSavedItems: PropTypes.func,
 };
 
 export default Items;

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import Items from './SelectedItems';
+import Items from './Items';
 import { SelectContext } from '../../SelectedContext';
 import './style.css';
 
