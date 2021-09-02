@@ -4,7 +4,6 @@ import "./style.css";
 const Item = ({ completionStatus, item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
-  const [isCompleted, setIsCompleted] = useState(false);
 
   const handleEntry = (event) => {
     setTempItem(event.target.value);
