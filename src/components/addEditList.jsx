@@ -14,7 +14,7 @@ const AddEditList = ({ currentTitle, onAdd, id }) => {
   };
 
   return (
-    <div className='listName'>
+    <div className={id === selected ? 'selected' : 'not-selected'}>
       {!listAdded ? (
         <>
           {' '}

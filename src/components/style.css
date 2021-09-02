@@ -1,7 +1,14 @@
-.listName {
+.not-selected {
   padding: 10px;
   border: 2px solid rgb(156, 214, 247);
   background-color: turquoise;
+  color: rgb(10, 0, 151);
+}
+
+.selected {
+  padding: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(252, 255, 255);
   color: rgb(10, 0, 151);
 }
 
