@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import ListNames from "./components/ListNames";
-import SavedItems from "./components/list-items/index";
-import NavBar from "./components/navBar";
-import "./App.css";
-import { SelectContext } from "./SelectedContext";
+import React, { useState } from 'react';
+import ListNames from './components/ListNames';
+import SavedItems from './components/list-items/index';
+import NavBar from './components/navBar';
+import './App.css';
+import { SelectContext } from './SelectedContext';
 
 const App = () => {
   const [selected, setSelected] = useState(0);

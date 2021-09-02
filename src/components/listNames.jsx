@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import AddEditList from "./AddEditList";
-import "./style.css";
+import React, { useState } from 'react';
+import AddEditList from './AddEditList';
+import './style.css';
 
 const ListNames = () => {
-  const [todoLists, setTodoLists] = useState([{ id: 0, title: "" }]);
+  const [todoLists, setTodoLists] = useState([{ id: 0, title: '' }]);
 
   return (
     <div>
@@ -22,7 +22,7 @@ const ListNames = () => {
             if (editStatus === false) {
               const tempTempArray = [
                 ...tempArray,
-                { id: index + 1, title: "" },
+                { id: index + 1, title: '' },
               ];
               setTodoLists(tempTempArray);
             } else {

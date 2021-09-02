@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import AddItem from "./AddItem";
-import Item from "./Item";
+import React, { useState } from 'react';
+import AddItem from './AddItem';
+import Item from './Item';
 
 const Items = ({ items, onSetSavedItems }) => {
   const handleAddItem = (newItem) => {
-    if (newItem === "") {
-      alert("Missing entry!");
+    if (newItem === '') {
+      alert('Missing entry!');
     } else {
       items = [...items, { todoItem: newItem, completed: false }];
       onSetSavedItems(items);
