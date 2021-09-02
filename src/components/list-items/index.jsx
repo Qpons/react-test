@@ -9,7 +9,7 @@ const Items = () => {
     if (newItem === '') {
       alert('Missing entry!');
     } else {
-      setItems([...items, { todoItem: newItem, completed: false }]);
+      setItems([...items, { value: newItem, completed: false }]);
     }
     console.log(items);
   };
@@ -17,24 +17,24 @@ const Items = () => {
   return (
     <div>
       <ol>
-        {items.map((itemObj, index) => (
+        {items.map((item, index) => (
           <Item
-            item={itemObj.todoItem}
+            item={item.todoItem}
             key={index}
             onEdit={(item, checkStatus) => {
               const before = items.slice(0, index);
               const after = items.slice(index + 1);
               setItems([
                 ...before,
-                { todoItem: item, completed: checkStatus },
+                { value: item, completed: checkStatus },
                 ...after,
               ]);
               console.log(items);
             }}
             onDelete={() => {
-              const tempArray = [...items];
-              tempArray.splice(index, 1);
-              setItems(tempArray);
+              const before = items.slice(0, index);
+              const after = items.slice(index + 1);
+              setItems(...before, ...after);
             }}
           />
         ))}

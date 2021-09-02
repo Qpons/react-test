@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 
-const Item = ({ item, onCompletion, onDelete, onEdit }) => {
+const Item = ({ item, onDelete, onEdit }) => {
   const [editStatus, setEditStatus] = useState(false);
   const [tempItem, setTempItem] = useState(item);
   const [isCompleted, setIsCompleted] = useState(false);
