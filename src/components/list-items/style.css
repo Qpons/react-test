@@ -1,0 +1,37 @@
+.complete {
+  text-decoration: line-through;
+  margin: 10px;
+  font-size: x-large;
+}
+
+.incomplete {
+  text-decoration: none;
+  margin: 10px;
+  font-size: x-large;
+}
+
+.item-button {
+  font-size: x-large;
+  margin: 5px;
+  color: white;
+}
+
+.save-btn {
+  background-color: green;
+}
+
+.clear-btn {
+  background-color: rgb(170, 125, 42);
+}
+
+.edit-btn {
+  background-color: rgba(58, 181, 168, 0.508);
+}
+
+.cancel-btn {
+  background-color: red;
+}
+
+.delete-btn {
+  background-color: salmon;
+}

@@ -1,39 +1,47 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const AddItem = ({ setItems, items }) => {
-  const [newItem, setNewItem] = useState("");
+const AddItem = ({ onSave }) => {
+  const [newItem, setNewItem] = useState('');
   const handleEntry = (event) => {
     setNewItem(event.target.value);
-    console.log(event.target.value);
-  };
-
-  const handleAddItem = () => {
-    setItems([...items, newItem]);
-    setNewItem("");
   };
 
   return (
     <div>
       <div>
-        <input onChange={handleEntry} type='text' value={newItem} />
+        <input
+          className='incomplete'
+          onChange={handleEntry}
+          type='text'
+          value={newItem}
+        />
 
         <button
-          onClick={handleAddItem}
-          placeholder='Please enter new todo item'
+          className='item-button save-btn'
+          onClick={() => {
+            onSave(newItem);
+            setNewItem('');
+          }}
         >
-          {"Save"}
+          {'Save'}
         </button>
 
         <button
+          className='item-button clear-btn'
           onClick={() => {
-            setNewItem("");
+            setNewItem('');
           }}
         >
-          {"Clear"}
+          {'Clear'}
         </button>
       </div>
     </div>
   );
+};
+
+AddItem.propTypes = {
+  onSave: PropTypes.func,
 };
 
 export default AddItem;

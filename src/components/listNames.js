@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ListName from "./listName";
-import "./style.css";
+import React, { Component } from 'react';
+import ListName from './listName';
+import './style.css';
 
 const ListNames = () => (
   <div>

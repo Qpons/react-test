@@ -1,10 +1,10 @@
-.listName {
+.list-name {
   padding: 10px;
   border: 2px solid rgb(156, 214, 247);
   background-color: turquoise;
 }
 
-.listItem {
+.list-item {
   margin: 15px;
   font-size: x-large;
 }
